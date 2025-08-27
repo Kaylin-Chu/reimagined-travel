@@ -2,4 +2,41 @@ body {
   background-color: #faf8f1;
   color: #0a1520;
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right,#d397eb, #989de3, #8fb4ee, #62c8da, #adebe9);
+  }
+
+h1 {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 5em;
+}
+
+img {
+  max-width: 100%;
+  height: 30vh;
+  object-fit: contain;
+}
+
+table {
+  margin: auto;
+  /* border-collapse: collapse; */
+}
+
+.centred {
+  text-align: center;
+}
+
+.length {
+  height: 30vh;
+  width: 50%;
+  object-fit: contain;
+}
+
+.manualMiddle {
+  transform: translateX(-50px)
+}
+
+.manualMiddleBiggerImage {
+  transform: translateX(-50px);
+  width: 50vh;
 }
