@@ -5,10 +5,17 @@ body {
   background: linear-gradient(to right,#d397eb, #989de3, #8fb4ee, #62c8da, #adebe9);
   }
 
-h1 {
+header {
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
   font-size: 5em;
+  margin: 0;
+}
+
+h1 {
+  font-size: 4em;
+  color: white;
+  margin: 0;
 }
 
 img {
@@ -20,6 +27,32 @@ img {
 table {
   margin: auto;
   /* border-collapse: collapse; */
+}
+p {
+  font-size: 2em;
+  color: white;
+  line-height: 1.6;
+  margin: 20px;
+}
+
+.holiday {
+  height: 45vh;
+  width: 45vh;
+  border-radius: 50%;
+}
+.chosen {
+  height: 15vh;
+  width: 15vh;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.chosenRounded {
+  height: 15vh;
+  width: 15vh;
+  object-fit: contain;
+  border-radius: 50%;
+  vertical-align: middle;
 }
 
 .centred {

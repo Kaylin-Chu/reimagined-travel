@@ -5,7 +5,7 @@ function Length() {
     <div className="centred">
       <table>
       <tr>
-        <td><Link to={`/PLACEHOLDER`}><img className="length" src="../../images/weekend.png" alt="weekend"/></Link></td>
+        <td><Link to={`/Roadtrip`}><img className="length" src="../../images/weekend.png" alt="weekend"/></Link></td>
         <td><Link to={`/PLACEHOLDER`}><img className="manualMiddle" src="../../images/week.png" alt="week"/></Link></td>
       </tr>
       <tr>
@@ -13,7 +13,7 @@ function Length() {
         <td><Link to={`/PLACEHOLDER`}><img className="manualMiddleBiggerImage" src="../../images/month.png" alt="month"/></Link></td>
       </tr>
       </table>
-      <p>How long do you have to travel?</p>
+      <p>How long do you want to travel for?</p>
     </div>
   )
 }

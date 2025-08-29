@@ -2,7 +2,7 @@ function PLACEHOLDER() {
   return (
     <body className="centred">
     <h2> You&apos;ve found a placeholder! Good job </h2>
-    <h3> Now go back and finish the app 😊 </h3>
+    <h3> Now to go back and finish the app 😊 </h3>
     </body>
   )
 }

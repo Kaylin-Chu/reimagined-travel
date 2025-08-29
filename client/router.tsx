@@ -9,12 +9,14 @@ import Home from './components/Destination'
 import Budget from './components/Budget'
 import Length from './components/Length'
 import PLACEHOLDER from './components/PLACEHOLDER'
+import Roadtrip from './components/Roadtrip'
 
 const routes = createRoutesFromElements(
   <Route path="/" element={<App />}>
     <Route index element={<Home />} />
     <Route path="budget" element={<Budget/>} />
     <Route path="length" element={<Length/>} />
+    <Route path="roadtrip" element={<Roadtrip/>} />
     <Route path="placeholder" element={<PLACEHOLDER/>} />
   </Route>,
 )
