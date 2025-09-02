@@ -9,22 +9,27 @@ function PLACEHOLDER() {
 
 export default PLACEHOLDER
 
-// import { Link } from "react-router"
-// 
+// import { useNavigate } from "react-router"
+
 // function PLACEHOLDER() {
+//    const navigate = useNavigate()
+
+//   const handleSelect = (destination: string) => {
+//     navigate('/PLACEHOLDER', { state: { destination } })
+//   }
 //   return (
 //     <div className="centred">
 //       <table>
 //       <tr>
-//         <td><Link to={`/PLACEHOLDER`}><img src="../../images/PLACEHOLDER.png" alt="PLACEHOLDER"/></Link></td>
-//         <td><Link to={`/PLACEHOLDER`}><img src="../../images/PLACEHOLDER.png" alt="PLACEHOLDER"/></Link></td>
+//         <td><img className="length" src="../../images/.png" alt="" onClick={() => handleSelect('')}/></td>
+//         <td><img className="manualMiddle" src="../../images/.png" alt="" onClick={() => handleSelect('')}/></td>
 //       </tr>
 //       <tr>
-//         <td><Link to={`/PLACEHOLDER`}><img src="../../images/PLACEHOLDER.png" alt="PLACEHOLDER"/></Link></td>
-//         <td><Link to={`/PLACEHOLDER`}><img src="../../images/PLACEHOLDER" alt="PLACEHOLDER"/></Link></td>
+//         <td><img className="length" src="../../images/.png" alt="" onClick={() => handleSelect('')}/></td>
+//         <td><img className="manualMiddleBiggerImage" src="../../images/.png" alt="" onClick={() => handleSelect('')}/></td>
 //       </tr>
 //       </table>
-//       <p>PLACEHOLDER</p>
+//       <p>How long do you want to travel for?</p>
 //     </div>
 //   )
 // }
