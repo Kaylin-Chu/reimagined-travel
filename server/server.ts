@@ -48,15 +48,15 @@ server.post('/api/v1/holiday', async (req, res) => {
         .json({ error: 'Missing destination, budget, or length in request' })
     }
 
-    const prompt = `Suggest a travel destination based on the following criteria:
-    Destination: ${destination}
-    Budget: ${budget}
-    Length: ${length}
-    Provide a brief description of why this destination is a good fit.`
-
+    const prompt = `Please find me a ${destination} to travel to with a budget of ${budget} for ${length} from Wellington, New Zealand
+    Provide 1 sentence of why this destination is a good fit. 
+    An example for mountain, no budget, weekend is "Ohakune because it is drivable from Wellington and has great hiking trails in the mountains"`
+    console.log('Prompt:', prompt)
     const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
     const result = await model.generateContent([
-      { text: prompt }
+      { text: prompt 
+        // image:
+      }
     ])
     const holiday =
       result.response?.candidates?.[0]?.content?.parts?.[0]?.text ??
