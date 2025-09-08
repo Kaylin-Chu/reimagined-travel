@@ -6,6 +6,7 @@ type HolidayParams = {
   destination: string
   budget: string
   length: string
+  departureLocation: string
 }
 
 export async function getHoliday(params: HolidayParams): Promise<string> {
