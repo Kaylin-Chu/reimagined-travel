@@ -24,12 +24,13 @@ function Submit() {
     setDepartureLocation(e.target.value)
   }
 
-  console.log(destination, budget, length)
+  console.log(destination, budget, length, departureLocation)
 
   return (
     <div className="centred">
+      <br/>
       <label htmlFor="locationInput">
-        <h2>Where are you leaving from?</h2>
+        <h2>Where are you departing?</h2>
         <input
           type="text"
           autoComplete="address-line2"
@@ -39,8 +40,8 @@ function Submit() {
           onChange={handleInputChange}
         ></input>
       </label>
-      <h3>You&apos;re departing from</h3>
-      <h2>{departureLocation}</h2>
+      <br/>
+      <br/>
       <h2>You should visit:</h2>
       <button
         onClick={() => {
@@ -50,6 +51,7 @@ function Submit() {
           refetch()
         }}
         disabled={isLoading}
+        className='submitBtn'
       >
         {isLoading ? '🤔 Thinking...' : 'Get Holiday Recommendation'}
       </button>
