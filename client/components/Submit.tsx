@@ -16,8 +16,11 @@ function Submit() {
   console.log(destination, budget, length)
 
   return (
-    <div>
-      <h2>You should visit</h2>
+    <div className='centred'>
+      <h2>Where are you leaving from?</h2>
+      <input type="text" autoComplete="address-line2" placeholder="eg. Wellington, New Zealand"></input>
+      {/* {const } */}
+      <h2>You should visit:</h2>
       <button onClick={() => refetch()} disabled={isLoading}>
         {isLoading ? '🤔 Thinking...' : 'Get Holiday Recommendation'}
       </button>

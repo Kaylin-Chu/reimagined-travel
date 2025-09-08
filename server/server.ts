@@ -46,9 +46,10 @@ server.post('/api/v1/holiday', async (req, res) => {
       return res
         .status(400)
         .json({ error: 'Missing destination, budget, or length in request' })
+        console.log('Received body:', req.body)
     }
 
-    const prompt = `Please find me a ${destination} to travel to with a budget of ${budget} for ${length} from Wellington, New Zealand
+    const prompt = `Please find me a ${destination} to travel to with ${budget} for ${length} from Wellington, New Zealand
     Provide 1 sentence of why this destination is a good fit. 
     An example for mountain, no budget, weekend is "Ohakune because it is drivable from Wellington and has great hiking trails in the mountains"`
     console.log('Prompt:', prompt)
