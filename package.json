@@ -57,10 +57,12 @@
   },
   "browserslist": "> 2%, not dead",
   "dependencies": {
+    "@auth0/auth0-react": "^2.4.0",
     "@google/generative-ai": "^0.24.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "styled-components": "^6.1.19",
     "superagent": "^10.2.3"
   }
 }

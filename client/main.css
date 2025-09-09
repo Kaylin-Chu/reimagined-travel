@@ -49,6 +49,11 @@ input {
   font-size: 14px;
   border-radius: 8px;
 }
+audio {
+  width: 15vw;
+  height:4vh;
+  margin-right: auto; 
+}
 
 .submitBtn {
   background-color: #eebee7;
@@ -69,9 +74,7 @@ input {
 
 .navbarLinks {
   display: flex;
-  justify-content: flex-end;
-  gap: 0px;
-  list-style-type: none;
+  align-items: center;
   background-color: #eebee7;
 }
 
@@ -114,23 +117,15 @@ input {
   width: 50vh;
 }
 
-.matchdropbtn{
+/* Dropdown Button */
+.dropbtn {
   background-color: #eebee7;
-  padding: 5px;
   font-size: 16px;
   border: none;
   text-decoration: none;
   font: 100% 'Poppins', sans-serif;
-}
-
-/* Dropdown Button */
-.dropbtn {
-  background-color: #eebee7;
-  padding: 5px;
+  cursor: pointer;
   margin-right: 10px;
-  font-size: 16px;
-  border: none;
-  font: 100% 'Poppins', sans-serif;
 }
 
 /* Dropdown Content (Hidden) */
@@ -152,10 +147,9 @@ input {
   display: block;
 }
 
-
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-  display: list-item;
+  display: block;
   right: 10px;
   left: auto;
 }
@@ -173,3 +167,7 @@ a:link {
 a:visited {
   color: black;
 }
+
+audio::-webkit-media-controls-panel {
+      background-color: #eebee7 !important;
+    }

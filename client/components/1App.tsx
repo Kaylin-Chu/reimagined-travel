@@ -1,9 +1,11 @@
 import { Link, Outlet } from 'react-router'
+import Nav from "./Nav"
 
 function App() {
   return (
     <div>
-      <audio autoPlay muted loop controls>
+      <nav className="navbarLinks">
+        <audio autoPlay muted loop controls>
         <source src="../../2min-lofi.wav" type="audio/mpeg" />
         <track
           kind="captions"
@@ -14,18 +16,18 @@ function App() {
         />
         Your browser does not support the audio element.
       </audio>
-      <ul className="navbarLinks">
-        <Link to={'/'} className="matchdropbtn">
+      <Nav/>
+        <Link to={'/'} className="dropbtn">
           Home
         </Link>
         <div className="dropdown">
-          <button className="dropbtn">My Account</button>
+          <button className="dropbtn"> My Account</button>
           <div className="dropdown-content">
             <a href="/PLACEHOLDER">Holiday Recs</a>
-            <a href="/">Log Out</a>
+            <a href="/PLACEHOLDER">Log Out</a>
           </div>
         </div>
-      </ul>
+      </nav>
       <header> TravelAI </header>
       <Outlet />
     </div>
