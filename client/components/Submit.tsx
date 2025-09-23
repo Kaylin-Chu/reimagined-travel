@@ -2,12 +2,15 @@ import { useLocation } from 'react-router'
 import { useQuery } from '@tanstack/react-query'
 import { getHoliday } from '../apiClient.ts'
 import { useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function Submit() {
   const location = useLocation()
   const { destination, budget, length } = location.state || {}
 
   const [departureLocation, setDepartureLocation] = useState('')
+
+  const { getAccessTokenSilently } = useAuth0()
 
   const {
     data: holiday,
@@ -16,12 +19,13 @@ function Submit() {
     refetch,
   } = useQuery({
     queryKey: ['holiday', destination, budget, length],
-    queryFn: () => getHoliday({ destination, budget, length, departureLocation: departureLocation.trim() || 'Wellington, New Zealand' }),
+    queryFn: async () => getHoliday({ destination, budget, length, departureLocation: departureLocation.trim() || 'Wellington, New Zealand' }, await token),
     enabled: false, // false = fetches on button click (true)
   })
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDepartureLocation(e.target.value)
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const token = await getAccessTokenSilently()
+    setDepartureLocation(e.target.value, token)
   }
 
   console.log(destination, budget, length, departureLocation)
