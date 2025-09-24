@@ -1,8 +1,24 @@
 import 'dotenv/config'
 import * as Path from 'node:path'
 import express from 'express'
+import { Request, Response } from 'express'
 import cors from 'cors'
 import { GoogleGenerativeAI } from '@google/generative-ai'
+
+const { expressjwt: jwt } = require('express-jwt')
+const jwksRsa = require('jwks-rsa')
+
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    jwksUri: 'https://mako-2025-kaylin.au.auth0.com/.well-known/jwks.json',
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+  }),
+  audience: 'https://travelai/api',
+  issuer: 'https://mako-2025-kaylin.au.auth0.com/',
+  algorithms: ['RS256'],
+})
 
 const apiKey = process.env.GEMINI_API_KEY
 if (!apiKey) {
@@ -68,6 +84,22 @@ server.post('/api/v1/holiday', async (req, res) => {
     res.status(500).json({ error: 'Error generating holiday' })
   }
 })
+
+server.post(
+  '/api/save-recommendation',
+  checkJwt,
+  (req: Request, res: Response) => {
+    const authReq = req as Request & { auth: { sub: string } }
+    const userId = authReq.auth.sub
+    const { text } = req.body
+
+    console.log(`User ${userId} is saving:`, text)
+
+    // TODO: Save to your DB or a file associated with userId
+
+    res.json({ success: true })
+  },
+)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))

@@ -10,17 +10,18 @@ const queryClient = new QueryClient()
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
-    domain="mako-2025-kaylin"
-    clientId="
-6Eeg1i0wq20dcHw6IlYb9DWHnNOfbcvy"
-    authorizationParams={{
-      redirect_uri: window.location.origin,
-      audience: 'https://travelai/api',
-    }}
-  ><QueryClientProvider client={queryClient}>
-      <RouterProvider router={Router} />,
-      <ReactQueryDevtools />
-    </QueryClientProvider>,
+      domain="mako-2025-kaylin.au.auth0.com"
+      clientId="6Eeg1i0wq20dcHw6IlYb9DWHnNOfbcvy"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+        audience: 'https://travelai/api',
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={Router} />,
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+      ,
     </Auth0Provider>,
   )
 })

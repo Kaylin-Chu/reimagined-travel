@@ -9,12 +9,12 @@ type HolidayParams = {
   departureLocation: string
 }
 
-export async function getHoliday(params: HolidayParams, token: string): Promise<string> {
+export async function getHoliday(params: HolidayParams): Promise<string> {
   try{ const res = await request
     .post(`${rootURL}/holiday`)
     .send(params)
-    //.set('Accept', 'application/json')
-    .set('Authorization', `Bearer ${token}`)
+    .set('Accept', 'application/json')
+    //.set('Authorization', `Bearer ${token}`)
   return res.body.holiday
   } catch (err: unknown) {
       if (err instanceof Error) {
@@ -24,4 +24,8 @@ export async function getHoliday(params: HolidayParams, token: string): Promise<
       }
       return 'Failed to fetch holiday recommendation'
   }
+}
+
+export async function getRecommendations (){
+  return "Recommendations"
 }

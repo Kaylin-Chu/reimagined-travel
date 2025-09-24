@@ -10,7 +10,7 @@ function Submit() {
 
   const [departureLocation, setDepartureLocation] = useState('')
 
-  const { getAccessTokenSilently } = useAuth0()
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0()
 
   const {
     data: holiday,
@@ -18,21 +18,48 @@ function Submit() {
     isError,
     refetch,
   } = useQuery({
-    queryKey: ['holiday', destination, budget, length],
-    queryFn: async () => getHoliday({ destination, budget, length, departureLocation: departureLocation.trim() || 'Wellington, New Zealand' }, await token),
+    queryKey: ['holiday', destination, budget, length, departureLocation],
+    queryFn: async () => {
+      const result = await getHoliday({
+        destination,
+        budget,
+        length,
+        departureLocation:
+          departureLocation.trim() || 'Wellington, New Zealand',
+      })
+      if (isAuthenticated) {
+        try {
+          const token = await getAccessTokenSilently()
+          await fetch('/api/save-recommendation', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ text: result }),
+          })
+          console.log('Saved recommendation!')
+        } catch (err) {
+          console.error('Failed to save:', err)
+        }
+      } else {
+        console.log('User not logged in — skipping save.')
+      }
+
+      return result
+    },
     enabled: false, // false = fetches on button click (true)
   })
 
   const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const token = await getAccessTokenSilently()
-    setDepartureLocation(e.target.value, token)
+    setDepartureLocation(e.target.value)
   }
 
   console.log(destination, budget, length, departureLocation)
 
   return (
     <div className="centred">
-      <br/>
+      <br />
       <label htmlFor="locationInput">
         <h2>Where are you departing?</h2>
         <input
@@ -44,8 +71,8 @@ function Submit() {
           onChange={handleInputChange}
         ></input>
       </label>
-      <br/>
-      <br/>
+      <br />
+      <br />
       <h2>You should visit:</h2>
       <button
         onClick={() => {
@@ -55,7 +82,7 @@ function Submit() {
           refetch()
         }}
         disabled={isLoading}
-        className='submitBtn'
+        className="submitBtn"
       >
         {isLoading ? '🤔 Thinking...' : 'Get Holiday Recommendation'}
       </button>

@@ -1,7 +1,6 @@
 
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useState } from 'react'
 
 export default function Recommendations() {
  const {
@@ -13,6 +12,9 @@ export default function Recommendations() {
   if (isLoading) return <p>Loading...</p>
   if (isError) return <p>Error: {(error as Error).message}</p>
   console.log('Recommendations:', recommendations)
+
+  const { getAccessTokenSilently } = useAuth0()
+  const token = await getAccessTokenSilently()
 
   return (
     <div>
