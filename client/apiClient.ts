@@ -14,6 +14,7 @@ export async function getHoliday(params: HolidayParams): Promise<string> {
     .post(`${rootURL}/holiday`)
     .send(params)
     .set('Accept', 'application/json')
+    //.set('Authorization', `Bearer ${token}`)
   return res.body.holiday
   } catch (err: unknown) {
       if (err instanceof Error) {
@@ -23,4 +24,8 @@ export async function getHoliday(params: HolidayParams): Promise<string> {
       }
       return 'Failed to fetch holiday recommendation'
   }
+}
+
+export async function getRecommendations (){
+  return "Recommendations"
 }
