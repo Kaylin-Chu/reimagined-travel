@@ -3,18 +3,18 @@ import { useQuery } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
 
 export default function Recommendations() {
- const {
-    data: recommendations,
-    isLoading,
-    isError,
-    error,
-  } = useQuery("Recommendations", getRecommendations)
-  if (isLoading) return <p>Loading...</p>
-  if (isError) return <p>Error: {(error as Error).message}</p>
-  console.log('Recommendations:', recommendations)
+//  const {
+//     data: recommendations,
+//     isLoading,
+//     isError,
+//     error,
+//   } = useQuery("Recommendations", getRecommendations)
+//   if (isLoading) return <p>Loading...</p>
+//   if (isError) return <p>Error: {(error as Error).message}</p>
+//   console.log('Recommendations:', recommendations)
 
-  const { getAccessTokenSilently } = useAuth0()
-  const token = await getAccessTokenSilently()
+//   const { getAccessTokenSilently } = useAuth0()
+//   const token = await getAccessTokenSilently()
 
   return (
     <div>

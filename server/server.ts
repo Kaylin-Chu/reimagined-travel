@@ -1,12 +1,14 @@
 import 'dotenv/config'
 import * as Path from 'node:path'
 import express from 'express'
-import { Request, Response } from 'express'
+import type { Request, Response } from 'express'
 import cors from 'cors'
 import { GoogleGenerativeAI } from '@google/generative-ai'
+import { expressjwt as jwt } from 'express-jwt'
+import jwksRsa from 'jwks-rsa'
 
-const { expressjwt: jwt } = require('express-jwt')
-const jwksRsa = require('jwks-rsa')
+//const { expressjwt: jwt } = import('express-jwt')
+//const jwksRsa = import('jwks-rsa')
 
 const checkJwt = jwt({
   secret: jwksRsa.expressJwtSecret({
