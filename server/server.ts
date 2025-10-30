@@ -6,9 +6,9 @@ import cors from 'cors'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import { expressjwt as jwt } from 'express-jwt'
 import jwksRsa from 'jwks-rsa'
-
-//const { expressjwt: jwt } = import('express-jwt')
-//const jwksRsa = import('jwks-rsa')
+import { ParamsDictionary } from 'express-serve-static-core'
+import { JwtPayload } from 'jsonwebtoken'
+import { StatusCodes } from 'http-status-codes'
 
 const checkJwt = jwt({
   secret: jwksRsa.expressJwtSecret({
@@ -21,6 +21,11 @@ const checkJwt = jwt({
   issuer: 'https://mako-2025-kaylin.au.auth0.com/',
   algorithms: ['RS256'],
 })
+
+export interface JwtRequest<TReq = unknown, TRes = unknown>
+  extends Request<ParamsDictionary, TRes, TReq> {
+  auth?: JwtPayload
+}
 
 const apiKey = process.env.GEMINI_API_KEY
 if (!apiKey) {
@@ -87,17 +92,29 @@ server.post('/api/v1/holiday', async (req, res) => {
   }
 })
 
-server.post(
-  '/api/save-recommendation',
-  checkJwt,
-  (req: Request, res: Response) => {
+server.post('/api/v1/recommendations', checkJwt, async (req: JwtRequest, res: Response) => {
     const authReq = req as Request & { auth: { sub: string } }
     const userId = authReq.auth.sub
-    const { text } = req.body
+    const { text } = (req.body as { text: string })
 
+     if (!req.auth?.sub) {
+      res.sendStatus(StatusCodes.UNAUTHORIZED)
+      return
+    }
     console.log(`User ${userId} is saving:`, text)
 
-    // TODO: Save to your DB or a file associated with userId
+    // TODO: Save to DB
+    // try {
+    // const user_id = req.auth.sub
+    // // await db.syncUser(user_id)
+    // //   const { name, nickname, released, image } = req.body
+    // //   const id = await db.addPokemon({ name, nickname, released, user_id, image })
+    // //   res
+    // //     .setHeader('Location', `${req.baseUrl}/${id}`)
+    // //     .sendStatus(StatusCodes.CREATED)
+    // } catch (err) {
+    //   next(err)
+    // }
 
     res.json({ success: true })
   },
