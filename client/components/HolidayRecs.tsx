@@ -1,10 +1,13 @@
-function PLACEHOLDER() {
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
+function HolidayRecs() {
   return (
     <body className="centred">
       <h2> Your previous reccomendations! </h2>
-      <h3> </h3>
+
+      <IfAuthenticated></IfAuthenticated>
+      <IfNotAuthenticated></IfNotAuthenticated>
     </body>
   )
 }
 
-export default PLACEHOLDER
+export default HolidayRecs
