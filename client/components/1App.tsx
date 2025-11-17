@@ -23,7 +23,7 @@ function App() {
         <div className="dropdown">
           <button className="dropbtn"> My Account</button>
           <div className="dropdown-content">
-            <a href="/PLACEHOLDER">Holiday Recs</a>
+            <a href="/HolidayRecs">Holiday Recs</a>
             <a href="/PLACEHOLDER">Log Out</a>
           </div>
         </div>
