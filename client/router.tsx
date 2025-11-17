@@ -12,6 +12,7 @@ import PLACEHOLDER from './components/PLACEHOLDER'
 // import Roadtrip from './components/Roadtrip'
 import Submit from './components/Submit'
 import HolidayRecs from './components/HolidayRecs'
+import Recommendations from './components/Recommendations'
 
 const routes = createRoutesFromElements(
   <Route path="/" element={<App />}>
@@ -20,6 +21,7 @@ const routes = createRoutesFromElements(
     <Route path="length" element={<Length/>} />
     {/* <Route path="roadtrip" element={<Roadtrip/>} /> */}
     <Route path="submit" element={<Submit/>} />
+    <Route path="recommendations" element={<Recommendations/>} />
     <Route path="holidayRecs" element={<HolidayRecs/>} />
     <Route path="placeholder" element={<PLACEHOLDER/>} />
   </Route>,

@@ -1,22 +1,22 @@
 import { Link, Outlet } from 'react-router'
-import Nav from "./Nav"
+import Nav from './Nav'
 
 function App() {
   return (
     <div>
       <nav className="navbarLinks">
         <audio autoPlay muted loop controls>
-        <source src="../../2min-lofi.wav" type="audio/mpeg" />
-        <track
-          kind="captions"
-          src="2min-captions.vtt"
-          srcLang="en"
-          label="English"
-          default
-        />
-        Your browser does not support the audio element.
-      </audio>
-      <Nav/>
+          <source src="../../2min-lofi.wav" type="audio/mpeg" />
+          <track
+            kind="captions"
+            src="2min-captions.vtt"
+            srcLang="en"
+            label="English"
+            default
+          />
+          Your browser does not support the audio element.
+        </audio>
+        <Nav />
         <Link to={'/'} className="dropbtn">
           Home
         </Link>
